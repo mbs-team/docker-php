@@ -5,26 +5,8 @@ RUN echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/reposito
 RUN apk add --no-cache shadow
 RUN usermod -u 1000 www-data
 
-# Install PostgreSQL
-RUN apk add --no-cache postgresql-dev
-
-RUN apt-get update && apt-get install -y \
-    gnupg \
-    g++ \
-    procps \
-    openssl \
-    git \
-    unzip \
-    zlib1g-dev \
-    libzip-dev \
-    libfreetype6-dev \
-    libpng-dev \
-    libjpeg-dev \
-    libicu-dev  \
-    libonig-dev \
-    libxslt1-dev \
-    acl \
-    && echo 'alias sf="php bin/console"' >> ~/.bashrc
+# Install PostgreSQL and zlib
+RUN apk add --no-cache postgresql-dev zlib1g-dev
 
 RUN docker-php-ext-configure gd --with-jpeg --with-freetype
 
