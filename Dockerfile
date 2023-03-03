@@ -6,7 +6,7 @@ RUN apk add --no-cache shadow
 RUN usermod -u 1000 www-data
 
 # Install PostgreSQL and zlib
-RUN apk add --no-cache postgresql-dev zlib-dev libpng-dev
+RUN apk add --no-cache postgresql-dev zlib-dev libpng-dev libjpeg-dev
 
 RUN docker-php-ext-configure gd --with-jpeg --with-freetype
 
